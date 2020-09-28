@@ -5,7 +5,8 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Map;
-import java.util.HashMap; 
+import java.util.HashMap;
+import java.util.Iterator; 
 
 // Clase que modela un grafo dirigido no pesado.
 
@@ -64,22 +65,24 @@ public class Graph {
 			
 			Object[] values = arcos.values().toArray(); 
 			Edge arco = null; 
-			for(int i= 0; i<values.length && arco!= null; i++) {
+			for(int i= 0; i<values.length; i++) {
 				
 				arco = (Edge) values[i];
+				if (arco != null) {
 				
-				if(arco.getVerticePredecesor() == node){
-					
-					String key =arco.getVerticeSucesor()+" - "+node;
-					arcos.remove(key);
-
-				}			
-				else if(arco.getVerticeSucesor() == node) {
-					
-					String key =node+" - "+arco.getVerticePredecesor();
-					arcos.remove(key);
-					
-				}				
+					if(arco.getVerticePredecesor() == node){
+						
+						String key =arco.getVerticeSucesor()+" - "+node;
+						arcos.remove(key);
+	
+					}			
+					else if(arco.getVerticeSucesor() == node) {
+						
+						String key =node+" - "+arco.getVerticePredecesor();
+						arcos.remove(key);
+						
+					}	
+				}	
 			}
 			nodos.remove(node); 
 			logger.info("El nodo se ha eliminado correctamente."); 		
@@ -100,13 +103,13 @@ public class Graph {
 		
 		if(!estaN1) {
 				
-			logger.warning("El grafo no contiene al vertice1.");
-			logger.info("Agregue el vertice al grafo, para luego poder crear el arco.");
+			logger.warning("El grafo no contiene al nodo1.");
+			logger.info("Agregue el nodo al grafo, para luego poder crear el arco.");
 		}		
 		else if(!estaN2) {
 				
-			logger.warning("El grafo no contiene al vertice2.");
-			logger.info("Agregue el vertice al grafo, para luego poder crear el arco.");
+			logger.warning("El grafo no contiene al nodo2.");
+			logger.info("Agregue el nodo al grafo, para luego poder crear el arco.");
 			
 		}
 		else {
@@ -154,5 +157,7 @@ public class Graph {
 			
 		}
 	}
+	
+
 	
 }

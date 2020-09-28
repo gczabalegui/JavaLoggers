@@ -46,6 +46,8 @@ public class Tester {
 		System.out.println("Agregamos el arco 5 - 5 : ");
 		grafo.addEdge(5, 5);
 		
+		//grafo.RecorroArcos();
+		
 		// Eliminamos algunos nodos
 		
 		System.out.println("Eliminamos el 4:");
@@ -65,6 +67,8 @@ public class Tester {
 		grafo.removeEdge(3,6); 
 		System.out.println("Eliminamos el arco 8 - 4:");
 		grafo.removeEdge(8,4);
+		
+		//grafo.RecorroArcos();
 		
 	
 	}
